@@ -7,6 +7,7 @@ class CalculationType(str, Enum):
     SUBTRACT = "subtract"
     MULTIPLY = "multiply"
     DIVIDE = "divide"
+    EXPONENTIATE = "exponentiate"
 
 class CalculationCreate(BaseModel):
     a: float
