@@ -2,6 +2,7 @@ import pytest
 from pydantic import ValidationError
 from app.schemas.calculation import CalculationCreate, CalculationType
 from app.core.factory import CalculationFactory, Add, Subtract, Multiply, Divide
+from app.core.factory import CalculationFactory, Exponentiate
 
 def test_factory_get_operation():
     assert CalculationFactory.get_operation("add") is Add
@@ -29,3 +30,10 @@ def test_pydantic_validation_valid_data():
     assert schema.a == 10
     assert schema.b == 5
     assert schema.type == "add"
+
+def test_factory_get_exponentiate_operation():
+    assert CalculationFactory.get_operation("exponentiate") is Exponentiate
+
+def test_exponentiate_operation_execute():
+    assert Exponentiate(2, 3).execute() == 8
+    assert Exponentiate(5, 2).execute() == 25
