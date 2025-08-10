@@ -27,13 +27,16 @@ class Divide(Operation):
             raise ValueError("Cannot divide by zero.")
         return self.a / self.b
 
-# --- The Factory itself ---
+class Exponentiate(Operation):
+    def execute(self) -> float:
+        return self.a ** self.b
 class CalculationFactory:
     _operations = {
         "add": Add,
         "subtract": Subtract,
         "multiply": Multiply,
         "divide": Divide,
+        "exponentiate": Exponentiate, 
     }
 
     @staticmethod
